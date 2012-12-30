@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from distutils.core import setup
+from setuptools import setup, find_packages
 import os
 import sys
 
@@ -20,7 +20,7 @@ setup(name='pygnutools',
     author='Meitham Jamaa',
     author_email='meitham@meitham.com',
     url='http://meitham.com/pygnutools/',
-    packages=['pygnutools'],
+    packages=find_packages(),
     scripts = scripts,
     classifiers = [
         'Development Status :: 5 - Production/Stable',

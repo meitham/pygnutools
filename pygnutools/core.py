@@ -6,6 +6,8 @@ try:
 except ImportError:
     import pdb
 
+from pkg_resources import iter_entry_points
+
 
 class Primary(object):
     """This will be extended by all primaries
@@ -19,6 +21,10 @@ def evaluate(fpath, fname, ns):
     """
     from pygnutools import primaries_map
     primaries = getattr(ns, 'primaries', [])
+    # add plugins
+    for plugin in iter_entry_points(group='pygnutools.plugin',
+            name='primaries'):
+        primaries_map.update(plugin.load())
     context = {
             'fpath': fpath,
             'fname': fname,
@@ -68,6 +74,3 @@ class TreeWalker(object):
                     yield d, f
             elif os.path.isfile(file_path):
                 yield top, f
-
-
-
