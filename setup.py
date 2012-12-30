@@ -21,7 +21,7 @@ setup(name='pygnutools',
     author_email='meitham@meitham.com',
     url='http://meitham.com/pygnutools/',
     packages=['pygnutools'],
-    scripts = ,
+    scripts = scripts,
     classifiers = [
         'Development Status :: 5 - Production/Stable',
         'Environment :: Shell Environment',
