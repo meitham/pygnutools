@@ -25,7 +25,7 @@ def cli_args():
     parser.add_argument('--verbose', '-v', action='count')
     parser.add_argument('-name', dest='name', action=PrimaryAction)
     parser.add_argument('-true', dest='true', action=PrimaryAction, nargs=0)
-    parser.add_argument('-print', dest='print', action=PrimaryAction, nargs=0)
+    parser.add_argument('-print', dest='print', action=PrimaryAction, nargs='?')
     parser.add_argument('-print0', dest='print0', action=PrimaryAction, nargs=0)
     parser.add_argument('-exec', dest='exec', action=PrimaryAction, nargs='+')
     # add plugins

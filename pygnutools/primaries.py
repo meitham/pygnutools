@@ -30,6 +30,10 @@ class PrintPrimary(Primary):
     def __call__(self, context):
         fpath = context['fpath']
         fname = context['fname']
+        suffix = context['args']
+        if suffix:
+            print(os.path.join(fpath, fname), end=suffix)
+            return context
         if getattr(self, 'null', False):
             print(os.path.join(fpath, fname), end='\x00')
         else:
