@@ -38,8 +38,13 @@ def main():
     parser = cli_args()
     ns = parser.parse_args()
     tw = TreeWalker(top=ns.path)
+    from pygnutools import primaries_map
+    primaries = getattr(ns, 'primaries', [])
+    if not primaries:
+        primaries = [('print', None)]
+    # add plugins
+    for plugin in iter_entry_points(group='pygnutools.plugin',
+            name='primaries'):
+        primaries_map.update(plugin.load())
     for fpath, fname in tw.walk():
-        if not evaluate(fpath, fname, ns):
-            continue
-
-
+        evaluate(fpath, fname, primaries, ns.verbose)

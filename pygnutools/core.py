@@ -16,24 +16,17 @@ class Primary(object):
         self.__dict__.update(kwargs)
 
 
-def evaluate(fpath, fname, ns):
+def evaluate(fpath, fname, primaries, verbosity):
     """Evaluates a user test and return True or False, like GNU find tests
     """
     from pygnutools import primaries_map
-    primaries = getattr(ns, 'primaries', [])
-    # add plugins
-    for plugin in iter_entry_points(group='pygnutools.plugin',
-            name='primaries'):
-        primaries_map.update(plugin.load())
     context = {
             'fpath': fpath,
             'fname': fname,
-            'verbosity': ns.verbose
+            'verbosity': verbosity
     }
     for primary, args in primaries:
         context.update({'args': args})
-        if args is None:
-            continue  # unused test
         primary_object = primaries_map[primary]
         context = primary_object(context)
         if not context:

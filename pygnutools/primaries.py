@@ -34,6 +34,7 @@ class PrintPrimary(Primary):
             print(os.path.join(fpath, fname), end='\x00')
         else:
             print(os.path.join(fpath, fname))
+        return context
 
 
 class ExecPrimary(Primary):
@@ -47,6 +48,7 @@ class ExecPrimary(Primary):
         command = [path if t == '{}' else t for t in command]
         #print(' '.join(command))
         subprocess.call(command[:-1])
+        return context
 
 
 primaries_map = {
