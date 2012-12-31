@@ -19,6 +19,19 @@ See exivfind_ as an example that provides pyfind with EXIF primaries.
 
 .. _exivfind: https://github.com/meitham/exivfind
 
+for example with installing exivfind_ you could do::
+
+        pyfind ~/Pictures -iname \*.jpg -imake canon -print ', ' -print-tag 'model'
+
+The command above will look through your pictures directory for all files 
+matching *.jpg and are taking by a canon camera, then will print the file name
+followed by a comma and space ', ' and print the model of the camera. Neat!
+
+Options prefixed with i denote case insensitivity.
+
+Unlike GNU find, ``-print`` takes an optional single argument that is used as 
+a suffix after the filepath.
+
 Difference from GNU find
 ========================
 
