@@ -16,14 +16,16 @@ class Primary(object):
         self.__dict__.update(kwargs)
 
 
-def evaluate(fpath, fname, primaries, verbosity):
+def evaluate(dirname, filename, primaries, verbosity):
     """Evaluates a user test and return True or False, like GNU find tests
     """
     from pygnutools import primaries_map
     context = {
-            'fpath': fpath,
-            'fname': fname,
-            'verbosity': verbosity
+            'dirname': dirname,
+            'filename': filename,
+            'path': os.path.join(dirname, filename),
+            'verbosity': verbosity,
+            'buffer': [],
     }
     for primary, args in primaries:
         context.update({'args': args})
@@ -31,6 +33,7 @@ def evaluate(fpath, fname, primaries, verbosity):
         context = primary_object(context)
         if not context:
             return False
+    print(''.join(context['buffer']))
     return True
 
 

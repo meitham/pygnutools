@@ -27,6 +27,9 @@ def cli_args():
     parser.add_argument('-true', dest='true', action=PrimaryAction, nargs=0)
     parser.add_argument('-print', dest='print', action=PrimaryAction, nargs='?')
     parser.add_argument('-print0', dest='print0', action=PrimaryAction, nargs=0)
+    parser.add_argument('-println', dest='println', action=PrimaryAction, nargs=0)
+    parser.add_argument('-print-context', dest='print_context',
+            action=PrimaryAction, nargs=0)
     parser.add_argument('-exec', dest='exec', action=PrimaryAction, nargs='+')
     # add plugins
     for plugin in iter_entry_points(group='pygnutools.plugin', name='cli_args'):
@@ -46,5 +49,5 @@ def main():
     for plugin in iter_entry_points(group='pygnutools.plugin',
             name='primaries'):
         primaries_map.update(plugin.load())
-    for fpath, fname in tw.walk():
-        evaluate(fpath, fname, primaries, ns.verbose)
+    for dirname, filename in tw.walk():
+        evaluate(dirname, filename, primaries, ns.verbose)
