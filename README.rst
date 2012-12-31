@@ -15,9 +15,9 @@ Plugin Architecture
 Unlike the GNU find tool, this implementation allows plugins to be easily added. 
 The plugin architecture uses setuptools entry points.
 
-See exivfind__ as an example that provides pyfind with EXIF primaries.
+See exivfind_ as an example that provides pyfind with EXIF primaries.
 
-exivfind__: https://github.com/meitham/exivfind
+.. _exivfind: https://github.com/meitham/exivfind
 
 
 Getting Started
