@@ -19,9 +19,21 @@ See exivfind_ as an example that provides pyfind with EXIF primaries.
 
 .. _exivfind: https://github.com/meitham/exivfind
 
+Difference from GNU find
+========================
+
+This tools is not and will not be fully compatable with GNU find. For example
+GNU find inserts the ``-print`` automatically for you, where this tool won't.
+The reason for this is GNU find is oriented around filenames, a test match will
+give you back the file name that you after, where as this tool can do a lot 
+more than that, such as print something from the ``context`` object that was
+populated by one of the primaries.
+
+If you're interested in printing the file names you could always do that by
+explicitly provide the ``-print`` primary.
 
 Getting Started
----------------
+===============
 
 Clone::
 
@@ -31,15 +43,15 @@ Install::
 
 	cd pygnutools && python setup.py install
 
-Run::
+Run Examples::
 
-	find . -name \*.pyc -print
+	pyfind . -name \*.pyc -print
 
-	find some_path -iname \*.png -exec rm \{} \;
+	pyfind some_path -iname \*.png -exec rm \{} \;
 
 
 License
--------
+=======
 
 See LICENCE file
 
