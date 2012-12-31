@@ -41,10 +41,5 @@ Run::
 License
 -------
 
-Free Software Foundation's GNU AGPL v3.0.  Commercial licenses are also
-available, including free evaluation licenses.
-
-The goal of the server license is to require that enhancements to MangoDB
-be released to the community.  Traditional GPL often does not achieve this
-anymore as a huge amount of software runs in the cloud.
+See LICENCE file
 
