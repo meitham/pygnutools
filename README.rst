@@ -36,14 +36,15 @@ Difference from GNU find
 ========================
 
 This tools is not and will not be fully compatable with GNU find. For example
-GNU find inserts the ``-print`` automatically for you, where this tool won't.
+GNU find inserts the ``-print`` implictly for you, where this tool won't.
 The reason for this is GNU find is oriented around filenames, a test match will
 give you back the file name that you after, where as this tool can do a lot 
 more than that, such as print something from the ``context`` object that was
 populated by one of the primaries.
 
 If you're interested in printing the file names you could always do that by
-explicitly provide the ``-print`` primary.
+explicitly provide the ``-print`` primary. I can argue we are honoring the zen
+of python that explicit is better than implcit.
 
 Getting Started
 ===============
