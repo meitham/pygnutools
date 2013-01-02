@@ -33,7 +33,9 @@ def evaluate(dirname, filename, primaries, verbosity):
         context = primary_object(context)
         if not context:
             return False
-    print(''.join(context['buffer']))
+    line = ''.join(context['buffer'])
+    if line.strip():
+        print(line)
     return True
 
 
