@@ -23,11 +23,14 @@ def cli_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('-follow', dest='follow_links', action='store_true',
             default=False)
-    parser.add_argument('-depth', dest='depth_first', action='store_true',
-            default=False)
+    parser.add_argument('-depth', '-d', dest='depth_first',
+            action='store_true', default=False)
+    parser.add_argument('-maxdepth', dest='max_depth',
+            action='store', default=None, type=int, nargs=1)
     parser.add_argument('path', action='store', nargs='?', default=os.getcwd())
     parser.add_argument('--verbose', '-v', action='count')
     parser.add_argument('-name', dest='name', action=PrimaryAction)
+    parser.add_argument('-iname', dest='iname', action=PrimaryAction)
     parser.add_argument('-true', dest='true', action=PrimaryAction, nargs=0)
     parser.add_argument('-false', dest='false', action=PrimaryAction, nargs=0)
     parser.add_argument('-print', dest='print', action=PrimaryAction, nargs='?')

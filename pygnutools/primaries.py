@@ -19,8 +19,12 @@ class NameMatchPrimary(Primary):
     """
     def __call__(self, context):
         filename = context['filename']
+        case_match = getattr(self, 'case_match', True)
         pattern = context['args']
-        if fnmatch.fnmatch(filename, pattern):
+        if case_match and fnmatch.fnmatchcase(filename, pattern):
+            return context
+        elif not case_match and fnmatch.fnmatch(filename.lower(),
+                pattern.lower()):
             return context
 
 
@@ -87,6 +91,7 @@ class ExecPrimary(Primary):
 
 primaries_map = {
         'name': NameMatchPrimary(),
+        'iname': NameMatchPrimary(case_match=False),
         'true': TruePrimary(),
         'false': FalsePrimary(),
         'print': PrintPrimary(),
