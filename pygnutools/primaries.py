@@ -24,6 +24,20 @@ class NameMatchPrimary(Primary):
             return context
 
 
+class TruePrimary(Primary):
+    """Always returns the context, always evaluates to true
+    """
+    def __call__(self, context):
+        return context
+
+
+class FalsePrimary(Primary):
+    """Never returns the context, always evaluates to false
+    """
+    def __call__(self, context):
+        return
+
+
 class PrintPrimary(Primary):
     """Prints out the filename
     similar to `find . -print`
@@ -73,6 +87,8 @@ class ExecPrimary(Primary):
 
 primaries_map = {
         'name': NameMatchPrimary(),
+        'true': TruePrimary(),
+        'false': FalsePrimary(),
         'print': PrintPrimary(),
         'println': PrintLineFeedPrimary(),
         'print0': PrintPrimary(null=True),

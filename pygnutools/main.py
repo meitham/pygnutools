@@ -21,10 +21,15 @@ def cli_args():
     parser = argparse.ArgumentParser(description="extensible pure python "
             "gnu file like tool.")
     parser = argparse.ArgumentParser()
+    parser.add_argument('-follow', dest='follow_links', action='store_true',
+            default=False)
+    parser.add_argument('-depth', dest='depth_first', action='store_true',
+            default=False)
     parser.add_argument('path', action='store', nargs='?', default=os.getcwd())
     parser.add_argument('--verbose', '-v', action='count')
     parser.add_argument('-name', dest='name', action=PrimaryAction)
     parser.add_argument('-true', dest='true', action=PrimaryAction, nargs=0)
+    parser.add_argument('-false', dest='false', action=PrimaryAction, nargs=0)
     parser.add_argument('-print', dest='print', action=PrimaryAction, nargs='?')
     parser.add_argument('-print0', dest='print0', action=PrimaryAction, nargs=0)
     parser.add_argument('-println', dest='println', action=PrimaryAction, nargs=0)
@@ -40,7 +45,7 @@ def cli_args():
 def main():
     parser = cli_args()
     ns = parser.parse_args()
-    tw = TreeWalker(top=ns.path)
+    tw = TreeWalker(top=ns.path, **ns.__dict__)
     from pygnutools import primaries_map
     primaries = getattr(ns, 'primaries', [])
     if not primaries:
