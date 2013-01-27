@@ -23,7 +23,7 @@ def evaluate(dirname, filename, primaries, verbosity):
     context = {
             'dirname': dirname,
             'filename': filename,
-            'path': os.path.join(dirname, filename),
+            'path': os.path.relpath(os.path.join(dirname, filename)),
             'verbosity': verbosity,
             'buffer': [],
     }
